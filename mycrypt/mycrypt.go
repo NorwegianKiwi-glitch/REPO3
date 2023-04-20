@@ -16,6 +16,7 @@ func Krypter(melding []rune, alphabet []rune, chiffer int) []rune {
 	return kryptertMelding
 } */
 
+/*
 func Krypter(melding []rune, alphabet []rune, chiffer int) []rune {
 	kryptertMelding := make([]rune, len(melding))
 	for i := 0; i < len(melding); i++ {
@@ -25,6 +26,16 @@ func Krypter(melding []rune, alphabet []rune, chiffer int) []rune {
 			shiftedIndex -= len(alphabet)
 			shiftedIndex += chiffer % len(alphabet)
 		}
+		kryptertMelding[i] = alphabet[shiftedIndex]
+	}
+	return kryptertMelding
+}*/
+
+func Krypter(melding []rune, alphabet []rune, chiffer int) []rune {
+	kryptertMelding := make([]rune, len(melding))
+	for i := 0; i < len(melding); i++ {
+		indeks := sokIAlfabetet(melding[i], alphabet)
+		shiftedIndex := (indeks + chiffer) % len(alphabet)
 		kryptertMelding[i] = alphabet[shiftedIndex]
 	}
 	return kryptertMelding
