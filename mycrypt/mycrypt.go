@@ -17,13 +17,11 @@ func Krypter(melding []rune, alphabet []rune, chiffer int) []rune {
 	kryptertMelding := make([]rune, len(melding))
 	for i := 0; i < len(melding); i++ {
 		indeks := sokIAlfabetet(melding[i], alphabet)
-		if indeks < 0 {
-			// symbol not found in the alphabet, skip encryption
-			kryptertMelding[i] = melding[i]
-			continue
+		if indeks+chiffer >= len(alphabet) {
+			kryptertMelding[i] = alphabet[indeks+chiffer-len(alphabet)]
+		} else {
+			kryptertMelding[i] = alphabet[indeks+chiffer]
 		}
-		shiftedIndex := (indeks + chiffer) % len(alphabet)
-		kryptertMelding[i] = alphabet[shiftedIndex]
 	}
 	return kryptertMelding
 }
